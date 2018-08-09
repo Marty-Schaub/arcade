@@ -7,44 +7,54 @@ class Hero {
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
-//   handleInput(input) {
-//     let moves = {
-//       'left': function() {
-//         return this.x -= 20;
-//       },
-//       'right': function() {
-//       return this.x += 20;
-//     },
-//       'up': function(){
-//       return this.y -= 20;
-//     },
-//       'down': function(){
-//       return this.y += 20;
+  handleInput(input) {
+    let moves = {
+      'left': function() {
+        return this.x -= 20;
+      },
+      'right': function() {
+      return this.x += 20;
+    },
+      'up': function(){
+      return this.y -= 20;
+    },
+      'down': function(){
+      return this.y += 20;
+    }
+  }
+  document.addEventListener('keyup', function(e) {
+      var allowedKeys = {
+          37: 'left',
+          38: 'up',
+          39: 'right',
+          40: 'down'
+      };
+
+      player.handleInput(allowedKeys[e.keyCode]);
+  });
+}
+}
+
+
+//  handleInput(input) {
+//     switch(input) {
+//       case 'left':
+//       this.x -= 85;
+//       break;
+//       case 'right':
+//       this.x += 85;
+//       break;
+//       case 'up':
+//       this.y -= 85;
+//       break;
+//       case 'down':
+//       this.y += 85;
+//       break;
+//
 //     }
 //   }
 // }
-// }
-
-
- handleInput(input) {
-    switch(input) {
-      case 'left':
-      this.x -= 85;
-      break;
-      case 'right':
-      this.x += 85;
-      break;
-      case 'up':
-      this.y -= 85;
-      break;
-      case 'down':
-      this.y += 85;
-      break;
-
-    }
-  }
-}
-
+debugger;
 let player = new Hero();
 debugger;
 // Enemies our player must avoid
@@ -85,13 +95,13 @@ debugger;
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
-
-    player.handleInput(allowedKeys[e.keyCode]);
-});
+// document.addEventListener('keyup', function(e) {
+//     var allowedKeys = {
+//         37: 'left',
+//         38: 'up',
+//         39: 'right',
+//         40: 'down'
+//     };
+//
+//     player.handleInput(allowedKeys[e.keyCode]);
+// });
