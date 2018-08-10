@@ -1,4 +1,4 @@
-class Enemies {
+class Enemy {
   constructor(){
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -18,7 +18,7 @@ class Hero {
   constructor () {
     this.x = 300;
     this.y = 400;
-    this.sprite = 'images/char-boy.png';
+    this.sprite = 'images/char-cat-girl.png';
   }
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -61,16 +61,21 @@ class Hero {
 let player = new Hero();
 
 // Enemies our player must avoid
-let enemy = new Enemies();
-
+let roach1 = new Enemy();
+let allEnemies = [];
+allEnemies.push(roach1);
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-};
+       if (this.x < 450) {
+         this.x +=500 * dt;
+       } else {
+         this.x = -100;
+       }
+    }
+
+
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
