@@ -1,3 +1,19 @@
+class Enemies {
+  constructor(){
+    // Variables applied to each of our instances go here,
+    // we've provided one for you to get started
+
+    // The image/sprite for our enemies, this uses
+    // a helper we've provided to easily load images
+    this.sprite = 'images/enemy-bug.png';
+    this.x = 0;
+    this.y= 50;
+  }
+    render() {
+      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+};
+
 class Hero {
   constructor () {
     this.x = 300;
@@ -7,7 +23,6 @@ class Hero {
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
-
 
  handleInput(input) {
     switch(input) {
@@ -27,7 +42,8 @@ class Hero {
       case 'up':
       if (this.y > 0 ){
         this.y -=83;} else {
-        window.alert("Turn around, it's too deep.")
+        window.alert("You win!!");
+        //TODO: reset game
       //Add a sound bite
       }
       break;
@@ -41,17 +57,12 @@ class Hero {
   }
 }
 
+
 let player = new Hero();
 
 // Enemies our player must avoid
-const Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+let enemy = new Enemies();
 
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
-};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -66,16 +77,16 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+// DONE-Now write your own player class
+// DONE-This class requires an update(), render() and
+// DONE-a handleInput() method.
 
-//Update Hero's x and y property according to handleInput
+//DONE-Update Hero's x and y property according to handleInput
 //
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+// DONE-Place the player object in a variable called player
 
 
 // This listens for key presses and sends the keys to your
