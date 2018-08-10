@@ -7,56 +7,42 @@ class Hero {
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
-  handleInput(input) {
-    let moves = {
-      'left': function() {
-        return this.x -= 20;
-      },
-      'right': function() {
-      return this.x += 20;
-    },
-      'up': function(){
-      return this.y -= 20;
-    },
-      'down': function(){
-      return this.y += 20;
+
+
+ handleInput(input) {
+    switch(input) {
+      case 'left':
+      if (this.x > 0 ){
+        this.x -=101;} else {
+        window.alert("You'll fall off the edge of the earth!")
+      //Add a sound bite
+      }
+      break;
+      case 'right':
+      if (this.x < 400){
+        this.x += 101;} else {
+          window.alert("You'll fall off the edge of the earth!")
+        }
+      break;
+      case 'up':
+      if (this.y > 0 ){
+        this.y -=83;} else {
+        window.alert("Turn around, it's too deep.")
+      //Add a sound bite
+      }
+      break;
+      case 'down':
+      if (this.y < 400){
+        this.y += 83;} else {
+          window.alert("You'll fall off the edge of the earth!")
+        }
+      break;
     }
   }
-  document.addEventListener('keyup', function(e) {
-      var allowedKeys = {
-          37: 'left',
-          38: 'up',
-          39: 'right',
-          40: 'down'
-      };
-
-      player.handleInput(allowedKeys[e.keyCode]);
-  });
-}
 }
 
-
-//  handleInput(input) {
-//     switch(input) {
-//       case 'left':
-//       this.x -= 85;
-//       break;
-//       case 'right':
-//       this.x += 85;
-//       break;
-//       case 'up':
-//       this.y -= 85;
-//       break;
-//       case 'down':
-//       this.y += 85;
-//       break;
-//
-//     }
-//   }
-// }
-debugger;
 let player = new Hero();
-debugger;
+
 // Enemies our player must avoid
 const Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -91,17 +77,16 @@ Enemy.prototype.render = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-debugger;
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-// document.addEventListener('keyup', function(e) {
-//     var allowedKeys = {
-//         37: 'left',
-//         38: 'up',
-//         39: 'right',
-//         40: 'down'
-//     };
-//
-//     player.handleInput(allowedKeys[e.keyCode]);
-// });
+document.addEventListener('keyup', function(e) {
+    var allowedKeys = {
+        37: 'left',
+        38: 'up',
+        39: 'right',
+        40: 'down'
+    };
+
+    player.handleInput(allowedKeys[e.keyCode]);
+});
