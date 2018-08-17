@@ -44,7 +44,7 @@ class Hero {
         }
       break;
       case 'up'://sets victory condition and victory message
-      if (this.y > 20 ){
+      if (this.y > 67 ){
         this.y -=83;} else {
         this.y = 400;
         this.x = 300;
@@ -90,15 +90,15 @@ Enemy.prototype.update = function(dt) {
     }
 
 //check for collisions and reset game if collision occurs
+//provided by MDN https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
 checkCollisions = function() {
-  for (var enemy of allEnemies) {
+  for (let enemy of allEnemies) {
         //using the distance formula
         let dx = (enemy.x + enemy.radius) - (player.x + player.radius);
         let dy = (enemy.y + enemy.radius) - (player.y + player.radius);
         let distance = Math.sqrt(dx * dx + dy * dy);
 
        if (distance <  40) { //collision occurs
-           
           //reset start positions of enemies
             roach1.y = 50;
             roach2.y = 150;
