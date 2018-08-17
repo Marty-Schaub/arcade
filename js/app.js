@@ -8,7 +8,8 @@ class Enemy {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
-    this.speed = this.x += Math.floor(Math.random() * 500) + 100; 
+    this.speed = this.x += Math.floor(Math.random());
+    this.radius = 20;
   }
     render() {
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -20,10 +21,12 @@ class Hero {
     this.x = 300;
     this.y = 400;
     this.sprite = 'images/char-cat-girl.png';
+    this.radius = 20;
   }
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
+
 
  handleInput(input) {
     switch(input) {
@@ -41,8 +44,10 @@ class Hero {
         }
       break;
       case 'up':
-      if (this.y > 0 ){
+      if (this.y > 20 ){
         this.y -=83;} else {
+        this.y = 400;
+        this.x = 300;
         window.alert("You win!!");
         //TODO: reset game
       //Add a sound bite
@@ -56,32 +61,60 @@ class Hero {
       break;
     }
   }
-}
-
+};
 
 let player = new Hero();
 
 // Enemies our player must avoid
-let roach1 = new Enemy(100,100);
-let roach2 = new Enemy(200,200);
-let roach3 = new Enemy(300,300);
+let roach1 = new Enemy(400,50);
+let roach2 = new Enemy(300,150);
+let roach3 = new Enemy(600,220);
 let allEnemies = [];
 allEnemies.push(roach1, roach2, roach3);
 
+player.update = function(dt){
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-       if (this.x < 450) {
+       if (this.x < 490) {
          this.speed * dt;
+         this.x = this.x + (this.speed * dt);
        } else {
          this.x = -100;
        }
     }
 
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+
+
+// // Draw the enemy on the screen, required method for game
+// Enemy.prototype.render = function() {
+//     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+// };
+
+
+//check for collisions and reset game if collision occurs
+//checkCollisions = function() {
+checkCollisions = function() {
+  for (var enemy of allEnemies) {
+        //using the distance formula
+        let dx = (enemy.x + enemy.radius) - (player.x + player.radius);
+        let dy = (enemy.y + enemy.radius) - (player.y + player.radius);
+        let distance = Math.sqrt(dx * dx + dy * dy);
+
+       if (distance <  40) { //collision occurs
+          //reset start positions of enemies
+            roach1.y = 50;
+            roach2.y = 150;
+            roach3.y = 225;
+            //reset start position of player
+            player.x = 300;
+            player.y = 400;
+          console.log('A collision occured!');
+      }
+    }
 };
 
 // DONE-Now write your own player class
@@ -108,15 +141,3 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
-//
-// let roach1 = {radius: 20, x: 5, y: 5};
-// let player = {radius: 12, x: 10, y: 5};
-//
-// let dx = roach1.x - player.x;
-// let dy = roach1.y - player.y;
-// let distance = Math.sqrt(dx * dx + dy * dy);
-//
-// if (distance < circle1.radius + circle2.radius) {
-//     // collision detected!
-// }

@@ -79,7 +79,8 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
+
     }
 
     /* This is called by the update function and loops through all of the
@@ -93,7 +94,7 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
            enemy.update(dt);
          });
-        //player.update();
+        player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -161,7 +162,15 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
+
+        //reset start positions of enemies and bugs
+        roach1.x= 0;
+        roach2.x =-400;
+        roach3.x = -150;
+        player.x = 300;
+        player.y = 400;
+
+
     }
 
     /* Go ahead and load all of the images we know we're going to need to
