@@ -1,6 +1,35 @@
-frontend-nanodegree-arcade-game
-===============================
+# Classic Arcade Game  by Tracy Fussell
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Table of Contents
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+* [Description](#description)
+* [Prerequisites](#prerequisites)
+* [Dependencies](#dependencies)
+* [Installing](#installing)
+* [Versioning](#versioning)
+* [Contributing](#contributing)
+* [Authors](#authors)
+* [Acknowledgements](#acknowledgements)
+
+## Description
+This classic arcade game project was part of the FEND Grow with Google Scholarship program.  It as simple arcade game that requires the user move the player using up and down arrows to the pavement to the river without colliding with the moving bugs.
+## Prerequisites
+The code for this project is written in html, css and javascript.  It requires a browser that supports ES6 and allows the player's browser to run scripts. It also requires a text/code editor to modify the html, css and javascript files.
+
+## Dependencies
+https://fonts.googleapis.com/css?family=Coda.
+
+## Installing
+This is a browser based game and requires installation on a webpage.
+
+## Versioning
+Version 1.0
+
+## Contributing
+As this project will become part of my portfolio, I will not be merging pull requests in to the project. Thank you for your understanding.
+
+## Authors
+Tracy Fussell
+
+## Acknowledgements
+I would like to thank Sarah M., my Udacity Classroom mentor. Her recommendations were instrumental in helping me understand a number of more complicated processes.
