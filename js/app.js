@@ -6,7 +6,7 @@ class Enemy {
     this.x = x;
     this.y = y;
     this.speed = this.x += Math.floor(Math.random());
-    this.radius = 20;
+    this.radius = 50;
   }
     render() {
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -20,7 +20,7 @@ class Hero {
     this.x = 300;
     this.y = 400;
     this.sprite = 'images/char-cat-girl.png';
-    this.radius = 20;
+    this.radius = 50;
   }
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -43,12 +43,19 @@ class Hero {
           window.alert("You'll fall off the edge of the earth!")
         }
       break;
-      case 'up'://sets victory condition and victory message
-      if (this.y > 67 ){
+     case 'up'://sets victory condition and victory message
+      if (this.y > 83){
         this.y -=83;} else {
-        this.y = 400;
-        this.x = 300;
-        window.alert("You win!!");
+        this.y -=75;
+          if (this.y < -10) {
+            window.alert('You win!');
+            this.y = 400;
+            this.x = 300;
+        }
+        //window.alert('You win!'); } else {
+        //this.y = 400;
+        //this.x = 300;
+      //  window.alert("You win!!");
         //TODO: reset game
       //Add a sound bite
       }
@@ -63,11 +70,13 @@ class Hero {
   }
 };
 
+
+
 //instatiate hero object
 let player = new Hero();
 
 //instatiate enemy objects, place enemies in array called allEnemies
-let roach1 = new Enemy(400,50);
+let roach1 = new Enemy(400,75);
 let roach2 = new Enemy(300,150);
 let roach3 = new Enemy(600,220);
 let allEnemies = [];
@@ -98,9 +107,9 @@ checkCollisions = function() {
         let dy = (enemy.y + enemy.radius) - (player.y + player.radius);
         let distance = Math.sqrt(dx * dx + dy * dy);
 
-       if (distance <  40) { //collision occurs
+       if (distance <  60) { //collision occurs
           //reset start positions of enemies
-            roach1.y = 50;
+            roach1.y = 60;
             roach2.y = 150;
             roach3.y = 225;
             //reset start position of player
