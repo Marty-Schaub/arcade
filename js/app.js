@@ -11,6 +11,14 @@ class Enemy {
     render() {
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
+    update(dt) {
+           if (this.x < 490) {
+             this.speed * dt;
+             this.x = this.x + (this.speed * dt);
+           } else {
+             this.x = -100;
+     }
+  }
 };
 
 //Create the Hero class including location, sprite, speed and radius of bugs for collision checking functionality.
@@ -25,6 +33,9 @@ class Hero {
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
+  update(dt) {
+  };
+
 
 //Set up event listener for player movement.  Set the borders of the playing field.  Display error message if Player
 //moves outside boundry of the board.
@@ -47,17 +58,23 @@ class Hero {
       if (this.y > 83){
         this.y -=83;} else {
         this.y -=75;
-          if (this.y < -10) {
-            window.alert('You win!');
-            this.y = 400;
-            this.x = 300;
+        // console.log(this.y);
+        //   if (this.y = -7) {
+        //     window.alert('You win!');
+        //     this.y = 400;
+        //     this.x = 300;
         }
-        //window.alert('You win!'); } else {
-        //this.y = 400;
-        //this.x = 300;
-      //  window.alert("You win!!");
-        //TODO: reset game
-      //Add a sound bite
+       console.log(this.y);
+      if (this.y < -6) {
+      this.sprite = 'images/heart.png';
+      // sleep(1000);
+      // this.sprite = 'images/char-cat-girl.png';
+      // sleep(1000)
+      // this.y = 400;
+      // this.x = 300;
+      }
+      if (this.y < -6){
+        alert("Great Job");
       }
       break;
       case 'down':
@@ -70,8 +87,6 @@ class Hero {
   }
 };
 
-
-
 //instatiate hero object
 let player = new Hero();
 
@@ -82,22 +97,6 @@ let roach3 = new Enemy(600,220);
 let allEnemies = [];
 allEnemies.push(roach1, roach2, roach3);
 
-
-//update player location based on movement, use dt, a time delta between ticks
-player.update = function(dt){
-};
-
-// Update the enemy's position
-// Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
-       if (this.x < 490) {
-         this.speed * dt;
-         this.x = this.x + (this.speed * dt);
-       } else {
-         this.x = -100;
-       }
-    }
-
 //check for collisions and reset game if collision occurs
 //provided by MDN https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
 checkCollisions = function() {
@@ -106,7 +105,6 @@ checkCollisions = function() {
         let dx = (enemy.x + enemy.radius) - (player.x + player.radius);
         let dy = (enemy.y + enemy.radius) - (player.y + player.radius);
         let distance = Math.sqrt(dx * dx + dy * dy);
-
        if (distance <  60) { //collision occurs
           //reset start positions of enemies
             roach1.y = 60;

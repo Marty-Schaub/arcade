@@ -12,7 +12,8 @@
 * [Acknowledgements](#acknowledgements)
 
 ## Description
-This classic arcade game project was part of the FEND Grow with Google Scholarship program.  It as simple arcade game that requires the user move the player using up and down arrows to the pavement to the river without colliding with the moving bugs.
+This classic arcade game project was part of the FEND Grow with Google Scholarship program.  It is a simple arcade game that requires the user move the player (using the up, down, left and right arrows) across the pavement to the water without colliding with the moving bugs.
+
 ## Prerequisites
 The code for this project is written in html, css and javascript.  It requires a browser that supports ES6 and allows the player's browser to run scripts. It also requires a text/code editor to modify the html, css and javascript files.
 
@@ -20,7 +21,7 @@ The code for this project is written in html, css and javascript.  It requires a
 https://fonts.googleapis.com/css?family=Coda.
 
 ## Installing
-This is a browser based game and requires installation on a webpage.
+This is a browser based game.  To play the game on your machine, download the zip file from the github repository indigorave/arcade.  Extract all the folders and files in to a folder.  Open the index.html file using your preferred browser.
 
 ## Versioning
 Version 1.0
