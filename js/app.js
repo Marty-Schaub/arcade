@@ -54,7 +54,7 @@ class Hero {
           window.alert("You'll fall off the edge of the earth!")
         }
       break;
-     case 'up'://sets victory condition and victory message
+     case 'up'://sets victory condition and changes to victory sprite and sets victory message
       if (this.y > 83){
         this.y -=83;} else {
         this.y -=75;
@@ -75,14 +75,18 @@ class Hero {
     }
   }
 };
+
+//Delay call of restart player function after clicking ok on the victory alert message
 function victoryReset(){
-  window.setTimeout(main,500);
+  window.setTimeout(restart,500);
 }
-   function main(){
+
+//reset player sprite and location after clicking ok on the victory alert message
+function restart(){
      player.sprite = 'images/char-cat-girl.png';
      player.x = 300;
      player.y = 400;
-   }
+}
 
 
 //instatiate hero object
