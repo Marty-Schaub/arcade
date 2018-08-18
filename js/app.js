@@ -58,24 +58,13 @@ class Hero {
       if (this.y > 83){
         this.y -=83;} else {
         this.y -=75;
-        // console.log(this.y);
-        //   if (this.y = -7) {
-        //     window.alert('You win!');
-        //     this.y = 400;
-        //     this.x = 300;
-        }
+      }
        console.log(this.y);
       if (this.y < -6) {
       this.sprite = 'images/heart.png';
-      // sleep(1000);
-      // this.sprite = 'images/char-cat-girl.png';
-      // sleep(1000)
-      // this.y = 400;
-      // this.x = 300;
-      }
-      if (this.y < -6){
-        alert("Great Job");
-      }
+     window.setTimeout(window.alert, 250, 'You Win');
+       victoryReset();
+        }
       break;
       case 'down':
       if (this.y < 400){
@@ -86,6 +75,15 @@ class Hero {
     }
   }
 };
+function victoryReset(){
+  window.setTimeout(main,500);
+}
+   function main(){
+     player.sprite = 'images/char-cat-girl.png';
+     player.x = 300;
+     player.y = 400;
+   }
+
 
 //instatiate hero object
 let player = new Hero();
